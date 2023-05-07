@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myfirstpoddeploy
+  name: todoapp
   labels:
     app: node
 spec:
@@ -11,12 +11,12 @@ spec:
       app: node
   template:
     metadata:
-      name: myfirstpod
+      name: todoapp
       labels:
         app: node
     spec:
       containers:
-      - name: myfirstpod
+      - name: todoapp
         image: kalpana16/todoapp
         ports:
         - containerPort: 3000
