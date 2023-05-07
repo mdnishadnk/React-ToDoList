@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: node
-  name: myfirstpoddeploy
+  name: todoapp
   namespace: default
 spec:
   ports:
