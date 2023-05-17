@@ -22,15 +22,16 @@ pipeline {
         sh 'cat Dockerfile'
       }
     }
-    stage ('setpe-5 conditional operation') {
-		steps {
-			sh '''if [ -f Dockerfile ]; then
-				echo "The Dockerfile exists."
-			else
-				echo "The Dockerfile does not exist."
-			fi'''
-			}
-		}
-	
+	stage ('step-3 Check Dockerfile') {
+      steps {
+        sh 'echo "Searching for Dockerfile..."'
+      }
+    }
+	stage ('step-4 Check Dockerfile') {
+      steps {
+        sh 'cat Dockerfile'
+      }
+    }
+    
 	}
 }
