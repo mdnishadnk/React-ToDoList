@@ -28,10 +28,9 @@ pipeline {
 		}
 	
 	}
-stage ('step-5 Check Dockerfile') {
-	steps {
+	stage ('step-5 Check Dockerfile') {
+	  steps {
 		sh 'echo "Searching for Dockerfile..."'
-      			}
-    	}
-	
+      }
+    }
 }
