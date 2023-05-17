@@ -22,12 +22,12 @@ pipeline {
         sh 'cat Dockerfile'
       }
     }
-	stage ('step-3 Check Dockerfile') {
+	stage ('step-5 Check Dockerfile') {
       steps {
         sh 'echo "Searching for Dockerfile..."'
       }
     }
-	stage ('step-4 Check Dockerfile') {
+	stage ('step-6 Check Dockerfile') {
       steps {
         sh 'cat Dockerfile'
       }
