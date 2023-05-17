@@ -24,14 +24,8 @@ pipeline {
     }
 	stage ('step-5 Check Dockerfile') {
       steps {
-        sh 'docker build -t nishad .'
-      }
-    }
-	stage ('step-6 Check Dockerfile') {
-      steps {
-        sh 'docker images'
-      }
-    }
-    
+       dockerFingerprintFrom dockerfile: '.', image: 'nishad', toolName: 'DOCKER_HOME'
+		}
+	} 
 	}
 }
