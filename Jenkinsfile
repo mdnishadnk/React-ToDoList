@@ -24,9 +24,14 @@ pipeline {
 			else
 				echo "The Dockerfile does not exist."
 			fi'''
-			sh 'cat Dockerfile'
 			}
 		}
+	
 	}
+	stage ('step-5 Check Dockerfile') {
+      steps {
+        sh 'echo "Searching for Dockerfile..."'
+      }
+    }
 	
 }
