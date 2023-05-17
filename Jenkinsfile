@@ -21,7 +21,7 @@ pipeline {
 		steps {
 			sh '''if [ -f Dockerfile ]; then
 				echo "The Dockerfile exists."
-				sh 'more Dockerfile'
+				sh 'cat Dockerfile'
 			else
 				echo "The Dockerfile does not exist."
 			fi'''
