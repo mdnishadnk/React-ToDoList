@@ -1,13 +1,36 @@
 pipeline {
-	agent none
-  stages {
-  	stage('Maven Install') {
-    	agent {
-      	docker {
-        	image 'maven:3.5.0'
-        }
-      }
+  agent any
+    stages {
+    stage ('step-1 Initialize') {
       steps {
-      	sh 'mvn clean install'
+        sh 'echo "Initializing..."'
       }
     }
+    stage ('step-2 Cloning Git Repository') {
+      steps {
+        git branch: 'main', credentialsId: 'git_full', url: 'https://github.com/mdnishadnk/React-ToDoList.git'
+        sh 'ls'
+      }
+    }
+    stage ('step-3 Check Dockerfile') {
+      steps {
+        sh 'echo "Searching for Dockerfile..."'
+      }
+    }
+	stage ('step-4 Check Dockerfile') {
+      steps {
+        sh 'cat Dockerfile'
+      }
+    }
+    stage ('setpe-5 conditional operation') {
+		steps {
+			sh '''if [ -f Dockerfile ]; then
+				echo "The Dockerfile exists."
+			else
+				echo "The Dockerfile does not exist."
+			fi'''
+			}
+		}
+	
+	}
+}
