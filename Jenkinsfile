@@ -1,36 +1,31 @@
-node {
-    def app
-
-    stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
-
-        checkout scm
+pipeline {
+  agent any
+    stages {
+    stage ('step-1 Initialize') {
+      steps {
+        sh 'echo "Initializing..."'
+      }
     }
-
-    stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-
-        app = docker.build("mdnishadnk/hellonode")
+    stage ('step-2 Cloning Git Repository') {
+      steps {
+        git branch: 'main', credentialsId: 'git_full', url: 'https://github.com/mdnishadnk/React-ToDoList.git'
+        sh 'ls'
+      }
     }
-
-    stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
-
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
+    stage ('step-3 Check Dockerfile') {
+      steps {
+        sh 'echo "Searching for Dockerfile..."'
+      }
     }
-
-    stage('Push image') {
-        /* Finally, we'll push the image with two tags:
-         * First, the incremental build number from Jenkins
-         * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://registry.hub.docker.com', 'docker_adm') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-        }
-    }
+    stage ('setpe-4 conditional operation') {
+		steps {
+			sh '''if [ -f Dockerfile ]; then
+				echo "The Dockerfile exists."
+			else
+				echo "The Dockerfile does not exist."
+			fi'''
+			}
+		}
+	}
+	
 }
