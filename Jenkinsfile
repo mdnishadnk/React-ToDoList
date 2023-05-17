@@ -23,8 +23,8 @@ pipeline {
       }
     }
 	stage ('step-5 Check Dockerfile') {
-      steps {
-       dockerFingerprintFrom dockerfile: '.', image: 'nishad', toolName: 'DOCKER_HOME'
+      		steps {
+       			dockerFingerprintFrom dockerfile: '.', image: 'nishad', toolName: 'DOCKER_HOME'
 		}
 	} 
 	}
