@@ -17,9 +17,9 @@ pipeline {
         sh 'echo "Searching for Dockerfile..."'
       }
     }
-	stage ('step-4 Check Dockerfile') {
+	stage ('step-4 List Dockerfile') {
       steps {
-        sh 'echo "Searching for Dockerfile..."'
+        sh 'cat Dockerfile'
       }
     }
     stage ('setpe-5 conditional operation') {
