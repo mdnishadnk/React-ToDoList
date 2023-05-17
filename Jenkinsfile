@@ -12,7 +12,17 @@ pipeline {
         sh 'ls'
       }
     }
-	stage ('setpe-5 conditional operation') {
+    stage ('step-3 Check Dockerfile') {
+      steps {
+        sh 'echo "Searching for Dockerfile..."'
+      }
+    }
+	stage ('step-4 Check Dockerfile') {
+      steps {
+        sh 'cat Dockerfile'
+      }
+    }
+    stage ('setpe-5 conditional operation') {
 		steps {
 			sh '''if [ -f Dockerfile ]; then
 				echo "The Dockerfile exists."
@@ -23,15 +33,4 @@ pipeline {
 		}
 	
 	}
-    stage ('step-3 Check Dockerfile') {
-      steps {
-        sh 'echo "Searching for Dockerfile..."'
-      }
-    }
-	stage ('step-4 List Dockerfile') {
-      steps {
-        sh 'cat Dockerfile'
-      }
-    }
-    
 }
